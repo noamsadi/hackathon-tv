@@ -144,6 +144,7 @@ const mcAgo = t => { const s = (Date.now() - new Date(t)) / 1000; if (!(s >= 0))
 /* Status and Priority can come back as { index }; these are the board's label indexes */
 const STATUS_IDX = { 0:'In Progress', 1:'Done', 2:'Blocked', 5:'Not Started' };
 const PRI_IDX = { 0:'High', 1:'Medium', 2:'Low', 3:'On hold' };
+const SUB_IDX = { 0:'Stuck', 1:'Working on it', 2:'Done' };
 const labelOf = (x, map) => typeof x === 'string' ? x : x?.text || x?.label || (x && x.index != null ? map[x.index] || '' : '');
 const peopleOf = v => !v ? [] : typeof v === 'string' ? v.split(',').map(x => x.trim()).filter(Boolean) : typeof v?.text === 'string' ? peopleOf(v.text) : [];
 const mcShipped = (label, subs) => (label || '').toLowerCase() === 'done' || (subs.length > 0 && subs.every(x => (x.status || '').toLowerCase() === 'done'));
@@ -152,7 +153,7 @@ let BOARD_DATA = null;
 function mcModel() {
   const raw = (BOARD_DATA?.items || []).filter(it => !KIT.kit[it.id]?.live).map(it => { const cv = it.column_values || {};
     return { id:String(it.id), name:it.name, updated:it.updated_at, owners:peopleOf(cv.multiple_person_mm7g67d6), status:labelOf(cv.color_mm7gfa0n, STATUS_IDX), pri:labelOf(cv.color_mm7gznpe, PRI_IDX), sp:cv.numeric_mm7gk419 == null ? '' : String(cv.numeric_mm7gk419),
-      subs:(it.subitems || []).map(s => ({ name:s.name, owners:peopleOf(s.column_values?.person), status:labelOf(s.column_values?.status, {}) })) }; });
+      subs:(it.subitems || []).map(s => ({ name:s.name, owners:peopleOf(s.column_values?.person), status:labelOf(s.column_values?.status, SUB_IDX) })) }; });
   const items = raw.map(it => {
     const subs = it.subs.map(s => ({ ...s, sp:mcSP(s.name), done:(s.status || '').toLowerCase() === 'done' }));
     const sp = subs.reduce((a, s) => a + s.sp, 0) || +it.sp || 0;
