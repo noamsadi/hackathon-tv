@@ -28,22 +28,32 @@ body.tv-on{overflow:hidden}
 .tv-live.on i{background:#4ADE80;animation:tvBreathe 3s ease-in-out infinite}
 @keyframes tvBreathe{50%{opacity:.35}}
 .tv-clock{font-size:52px;line-height:1;font-weight:500;letter-spacing:-.02em;font-variant-numeric:tabular-nums;color:#ECEAE6}
-.tv-grid{flex:1;min-height:0;display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);grid-template-rows:auto minmax(0,.86fr) minmax(0,1fr);gap:24px;
-  grid-template-areas:"sum sum" "ship ship" "ppl grab"}
+.tv-grid{flex:1;min-height:0;display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr) minmax(0,1fr);grid-template-rows:auto minmax(0,.86fr) minmax(0,1fr);gap:24px;
+  grid-template-areas:"sum sum sum" "ship ship ship" "ppl rev grab"}
 .tv-w{min-height:0;min-width:0;display:flex;flex-direction:column;gap:20px;padding:26px 28px;border-radius:22px;background:#151513;border:1px solid #1F1E1C}
 .tv-sum{grid-area:sum;flex-direction:row;align-items:stretch;gap:0;padding:24px 0}
 .tv-kpi{flex:1;min-width:0;display:flex;flex-direction:column;justify-content:space-between;gap:12px;padding:0 32px;border-left:1px solid #24231F}
 .tv-kpi:first-child{border-left:0}
-.tv-kpi>span{display:flex;align-items:center;gap:10px;font-size:17px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#A8A59F}
-.tv-kpi>span i{width:9px;height:9px;border-radius:50%}
+.tv-kpi>span{display:flex;align-items:center;gap:10px;white-space:nowrap;font-size:17px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#A8A59F}
+.tv-kpi>span i{width:9px;height:9px;flex-shrink:0;border-radius:50%}
 .tv-kpi>b{font-size:56px;line-height:1;font-weight:600;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
 .tv-kpi>b small{font-size:20px;font-weight:400;letter-spacing:0;color:#7D7A75}
-.tv-prog-k{flex:2.2}
+.tv-prog-k{flex:1.7}
 .tv-pk{display:flex;align-items:baseline;gap:18px}
 .tv-pk b{font-size:56px;line-height:1;font-weight:600;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
 .tv-pk b small{font-size:28px;color:#7D7A75;font-weight:500;margin-left:2px}
 .tv-pk em{font-style:normal;font-size:20px;color:#7D7A75}
-.tv-w-shipped{grid-area:ship}.tv-w-people{grid-area:ppl}.tv-w-grabs{grid-area:grab}
+.tv-w-shipped{grid-area:ship}.tv-w-people{grid-area:ppl}.tv-w-review{grid-area:rev}.tv-w-grabs{grid-area:grab}
+/* waiting for review */
+.tv-rev{height:100%;display:grid;grid-template-rows:repeat(4,minmax(0,1fr));gap:10px}
+.tv-rv{display:flex;align-items:center;gap:14px;min-width:0;padding:0 16px;border-radius:14px;background:#1C1B19;animation:tvIn .7s calc(var(--j) * 60ms) both}
+.tv-rv .tv-ic{width:36px;height:36px;flex-basis:36px;border-radius:10px}
+.tv-rv .tv-ic .svg{width:18px!important;height:18px!important}
+.tv-rv-x{flex:1;min-width:0;display:flex;flex-direction:column;gap:4px}
+.tv-rv-x b{font-size:19px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tv-rv-x em{font-style:normal;font-size:15px;color:#7D7A75;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tv-rv-av{display:flex;flex-shrink:0}
+.tv-rv-av .mc-av+.mc-av{margin-left:-8px}
 .tv-wh{display:flex;align-items:center;gap:12px;color:#7D7A75;font-size:22px}
 .tv-wh h3{margin:0;font-size:17px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#A8A59F}
 .tv-n{font-size:17px;font-variant-numeric:tabular-nums;color:#7D7A75}
@@ -74,12 +84,12 @@ body.tv-on{overflow:hidden}
 #tv .mc-av{box-shadow:0 0 0 2px #1C1B19}
 .tv-person .mc-av{box-shadow:none}
 /* who's on what */
-.tv-ppl{height:100%;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:minmax(0,1fr);gap:16px}
+.tv-ppl{height:100%;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:minmax(0,1fr);gap:16px}
 .tv-person{min-height:0;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-start;gap:14px;padding:20px 22px;border-radius:16px;background:#1C1B19;animation:tvIn .7s calc(var(--j) * 80ms) both}
 .tv-person-h{display:flex;align-items:center;gap:12px;margin-bottom:4px}
 .tv-person-h b{font-size:22px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .tv-person-h em{margin-left:auto;font-style:normal;font-size:17px;color:#A5B4FC;font-variant-numeric:tabular-nums}
-.tv-row{display:grid;grid-template-columns:minmax(0,1fr) 56px;align-items:center;gap:14px}
+.tv-row{display:grid;grid-template-columns:minmax(0,1fr);align-items:center}
 .tv-row-t{font-size:18px;color:#C9C6C0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .tv-prog{height:4px;border-radius:999px;background:#2A2926;overflow:hidden}
 .tv-prog i{display:block;height:100%;width:var(--w);background:#A5B4FC}
@@ -99,10 +109,7 @@ body.tv-on .mc-confetti{z-index:9500}
 </style></head>
 <body class="tv-on">
 <div id="tv"><div class="tv-stage"></div><div class="tv-ctl"><button type="button" class="tv-btn" data-tvfs="1"><span>Full screen</span></button></div></div>
-<script>const KIT = {"kit":{"13204004338":{"t":"Book a meeting","ic":"calPlus","col":"#2563EB"},"13123303059":{"t":"Send Slack message","ic":"slack","col":"#4A154B"},"13123292248":{"t":"Send AI generated Slack message","ic":"ai","col":"#8466FF"},"13123317479":{"t":"Send email","ic":"mail","col":"#0891B2"},"13123315040":{"t":"Change field value","ic":"cursorText","col":"#7C3AED"},"13123321047":{"t":"Assign permissions","ic":"lock","col":"#1E40AF"},"13123317494":{"t":"Invite employee to Shapes","ic":"mailHeart","col":"#5B21B6"},"13123284627":{"t":"Add time off days","ic":"beach","col":"#0D9488"},"13123285309":{"t":"Generate work email","ic":"at","col":"#4F46E5"},"13123271592":{"t":"Create a deck","ic":"presentation","col":"#4F46E5"},"13123287711":{"t":"Add to survey","ic":"survey","col":"#7C3AED"},"13123300146":{"t":"Add to review cycle","ic":"review","col":"#0F766E"},"13123302827":{"t":"Email subject on tasks","ic":"form","col":"#277C43"},"13123287728":{"t":"Assign a buddy (template)","ic":"form","col":"#277C43"},"13168328001":{"t":"Draft with AI (in messages)","ic":"mail","col":"#0891B2"},"13123292380":{"t":"Add to Slack","ic":"slack","col":"#4A154B"},"13123289811":{"t":"Add to Slack channels","ic":"slack","col":"#4A154B"},"13123292385":{"t":"Fill form","ic":"form","col":"#277C43"},"13192757934":{"t":"Delete data fields (proposal)","ic":"trash","col":"#B91C1C"},"13192749667":{"t":"AI create a report","ic":"ai","col":"#8466FF"},"13192776060":{"t":"Update fields from a signed doc","ic":"signature","col":"#EA580C"},"13192832331":{"t":"[Jira] Add a Jira task","ic":"task","col":"#0052CC"},"13192798700":{"t":"[Monday] Add a monday task","ic":"listD","col":"#6161FF"},"13192776747":{"t":"Send doc via email","ic":"mail","col":"#0891B2"},"13192776008":{"t":"Create a letter","ic":"file","col":"#0F766E"},"13192799845":{"t":"Create a vibe View [AI]","ic":"layout","col":"#8466FF"},"13192849513":{"t":"[Teams] Add to Teams","ic":"teams","col":"#5B5FC7"},"13192797701":{"t":"[Teams] Add to Teams channels","ic":"teams","col":"#5B5FC7"},"13192812825":{"t":"[Teams] Send a message via Teams","ic":"teams","col":"#5B5FC7"},"13123269558":{"t":"Send email","ic":"mail","col":"#0891B2"},"13123285312":{"t":"Book a meeting","ic":"calPlus","col":"#2563EB"},"13123315045":{"t":"Assign time away policy","ic":"beach","col":"#0D9488","live":true}},
-"paths":{"rocket":"<path d=\"M4 13a8 8 0 0 1 7 7 6 6 0 0 0 3-5 9 9 0 0 0 6-8 3 3 0 0 0-3-3 9 9 0 0 0-8 6 6 6 0 0 0-5 3M7 14a6 6 0 0 0-3 6 6 6 0 0 0 6-3M14 9a1 1 0 1 0 2 0 1 1 0 1 0-2 0\"/>","users":"<path d=\"M5 7a4 4 0 1 0 8 0 4 4 0 1 0-8 0M3 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2M16 3.13a4 4 0 0 1 0 7.75M21 21v-2a4 4 0 0 0-3-3.85\"/>","hand":"<path d=\"M8 13V5.5a1.5 1.5 0 0 1 3 0V12M11 5.5v-2a1.5 1.5 0 0 1 3 0V12M14 5.5a1.5 1.5 0 0 1 3 0V12M17 7.5a1.5 1.5 0 0 1 3 0V16a6 6 0 0 1-6 6h-2 .2a6 6 0 0 1-5-2.7L7 19c-.3-.5-1.4-2.4-3.2-5.6a1.5 1.5 0 0 1 .5-2 1.9 1.9 0 0 1 2.3.3L8 13\"/>","expand":"<path d=\"M4 9V5a1 1 0 0 1 1-1h4M20 9V5a1 1 0 0 0-1-1h-4M4 15v4a1 1 0 0 0 1 1h4M20 15v4a1 1 0 0 1-1 1h-4\"/>","details":"<path d=\"M13 5h8M13 9h5M13 15h8M13 19h5\"/><rect x=\"3\" y=\"4\" width=\"6\" height=\"6\" rx=\"1\"/><rect x=\"3\" y=\"14\" width=\"6\" height=\"6\" rx=\"1\"/>","calPlus":"<path d=\"M12.5 21H6a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v5M16 3v4M8 3v4M4 11h16M16 19h6M19 16v6\"/>","slack":"<path d=\"M12 12v-6a2 2 0 0 1 4 0v6m0-2a2 2 0 1 1 2 2h-6M12 12h6a2 2 0 0 1 0 4h-6m2 0a2 2 0 1 1-2 2v-6M12 12v6a2 2 0 0 1-4 0v-6m0 2a2 2 0 1 1-2-2h6M12 12H6a2 2 0 0 1 0-4h6m-2 0a2 2 0 1 1 2-2v6\"/>","mail":"<rect x=\"3\" y=\"5\" width=\"18\" height=\"14\" rx=\"2\"/><path d=\"m3 7 9 6 9-6\"/>","cursorText":"<path d=\"M10 12h4M9 4a3 3 0 0 1 3 3v10a3 3 0 0 1-3 3M15 4a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3\"/>","lock":"<rect x=\"5\" y=\"11\" width=\"14\" height=\"10\" rx=\"2\"/><path d=\"M8 11V7a4 4 0 0 1 8 0v4\"/>","mailHeart":"<path d=\"M10 19H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v4.5M3 7l9 6 9-6M18 22l3.35-3.284a2.143 2.143 0 0 0 .005-3.071 2.242 2.242 0 0 0-3.129-.006l-.224.22-.223-.22a2.242 2.242 0 0 0-3.128-.006 2.143 2.143 0 0 0-.006 3.071L18 22z\"/>","beach":"<path d=\"M17.553 16.75a7.5 7.5 0 0 0-10.606 0M18 3.804a6 6 0 0 0-8.196 2.196l10.392 6a6 6 0 0 0-2.196-8.196zM16.732 10c1.658-2.87 2.225-5.644 1.268-6.196-.957-.552-3.075 1.326-4.732 4.196M15 9l-3 5.196M3 19.25a2.4 2.4 0 0 1 1-.25 2.4 2.4 0 0 1 2 1 2.4 2.4 0 0 0 2 1 2.4 2.4 0 0 0 2-1 2.4 2.4 0 0 1 2-1 2.4 2.4 0 0 1 2 1 2.4 2.4 0 0 0 2 1 2.4 2.4 0 0 0 2-1 2.4 2.4 0 0 1 2-1 2.4 2.4 0 0 1 1 .25\"/>","at":"<circle cx=\"12\" cy=\"12\" r=\"4\"/><path d=\"M16 12v1.5a2.5 2.5 0 0 0 5 0V12a9 9 0 1 0-5.5 8.28\"/>","presentation":"<path d=\"M3 4h18M4 4v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V4M12 16v4M9 20h6M8 12l3-3 2 2 3-3\"/>","survey":"<path d=\"M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2M9 5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-2a2 2 0 0 1-2-2zM9 14l2 2 4-4\"/>","review":"<path d=\"M12 3v18M5 7h14M7 7l-3 6a3 3 0 0 0 6 0l-3-6M17 7l-3 6a3 3 0 0 0 6 0l-3-6M8 21h8\"/>","form":"<path d=\"M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2M9 5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-2a2 2 0 0 1-2-2zM9 12h.01M13 12h2M9 16h.01M13 16h2\"/>","trash":"<path d=\"M4 7h16M10 11v6M14 11v6M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2l1-12M9 7V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v3\"/>","signature":"<path d=\"M3 17c3.333-3.333 5-6 5-8 0-3-1-3-2-3S3.968 7.085 4 9c.034 2.048 1.658 4.877 2.5 6C8 17 9 17.5 10 16l2-3c.333 2.667 1.333 4 3 4 .53 0 2.639-2 3-2 .517 0 1.517.667 3 2\"/>","task":"<path d=\"M10 20.777a8.942 8.942 0 0 1-2.48-.969M14 3.223a9.003 9.003 0 0 1 0 17.554M4.579 17.093a8.961 8.961 0 0 1-1.227-2.592M3.124 10.5c.16-.95.468-1.85.9-2.675l.169-.305M6.907 4.579a8.954 8.954 0 0 1 3.093-1.356M9 12l2 2 4-4\"/>","listD":"<path d=\"M13 5h8M13 9h5M13 15h8M13 19h5M3 4h6v6H3zM3 14h6v6H3z\"/>","file":"<path d=\"M14 3v4a1 1 0 0 0 1 1h4M17 21H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7l5 5v11a2 2 0 0 1-2 2z\"/>","layout":"<path d=\"M4 5a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1zM4 10h16M10 10v10\"/>","teams":"<path d=\"M3 7h10v10H3zM6 10h4M8 10v5M15 9h4a2 2 0 0 1 2 2v3a3 3 0 0 1-3 3h-1a3 3 0 0 1-2-1M17 4.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3\"/>"},
-"ai":"<svg class=\"svg\" viewBox=\"0 0 24 24\" aria-hidden=\"true\" style=\"stroke:none\"><defs><linearGradient id=\"aig\" x1=\"0\" y1=\"0\" x2=\"1\" y2=\"1\"><stop offset=\"0\" stop-color=\"#8466FF\"/><stop offset=\"1\" stop-color=\"#FF9179\"/></linearGradient></defs><circle cx=\"12\" cy=\"12\" r=\"11\" fill=\"none\" stroke=\"url(#aig)\" stroke-width=\"1\"/><path fill=\"url(#aig)\" d=\"M11.5 9.7a3.2 3.2 0 0 1 1.8-1.8l.4-.2-.3-.7c-.5-1.4-2.4-1.4-3 0l-.7 1.9a1.6 1.6 0 0 1-.9.9l-1.9.7c-1.4.5-1.4 2.4 0 3l.7.3.1-.4a3.2 3.2 0 0 1 1.8-1.8l.8-.3c.3-.1.6-.4.7-.7zM14.3 11a1 1 0 0 1 1.8 0l.5 1.2c.2.5.6.9 1.1 1.1l1.2.5a1 1 0 0 1 0 1.8l-1.2.5c-.5.2-.9.6-1.1 1.1l-.5 1.2a1 1 0 0 1-1.8 0l-.5-1.2a2 2 0 0 0-1.1-1.1l-1.2-.5a1 1 0 0 1 0-1.8l1.2-.5c.5-.2.9-.6 1.1-1.1z\"/></svg>"}
-;
+<script>const KIT = {"kit":{"13204004338":{"t":"Book a meeting","ic":"calPlus","col":"#2563EB"},"13123303059":{"t":"Send Slack message","ic":"slack","col":"#4A154B"},"13123292248":{"t":"Send AI generated Slack message","ic":"ai","col":"#8466FF"},"13123317479":{"t":"Send email","ic":"mail","col":"#0891B2"},"13123315040":{"t":"Change field value","ic":"cursorText","col":"#7C3AED"},"13123321047":{"t":"Assign permissions","ic":"lock","col":"#1E40AF"},"13123317494":{"t":"Invite employee to Shapes","ic":"mailHeart","col":"#5B21B6"},"13123284627":{"t":"Add time off days","ic":"beach","col":"#0D9488"},"13123285309":{"t":"Generate work email","ic":"at","col":"#4F46E5"},"13123271592":{"t":"Create a deck","ic":"presentation","col":"#4F46E5"},"13123287711":{"t":"Add to survey","ic":"survey","col":"#7C3AED"},"13123300146":{"t":"Add to review cycle","ic":"review","col":"#0F766E"},"13123302827":{"t":"Email subject on tasks","ic":"form","col":"#277C43"},"13123287728":{"t":"Assign a buddy (template)","ic":"form","col":"#277C43"},"13168328001":{"t":"Draft with AI (in messages)","ic":"mail","col":"#0891B2"},"13123292380":{"t":"Add to Slack","ic":"slack","col":"#4A154B"},"13123289811":{"t":"Add to Slack channels","ic":"slack","col":"#4A154B"},"13123292385":{"t":"Fill form","ic":"form","col":"#277C43"},"13192757934":{"t":"Delete data fields (proposal)","ic":"trash","col":"#B91C1C"},"13192749667":{"t":"AI create a report","ic":"ai","col":"#8466FF"},"13192776060":{"t":"Update fields from a signed doc","ic":"signature","col":"#EA580C"},"13192832331":{"t":"[Jira] Add a Jira task","ic":"task","col":"#0052CC"},"13192798700":{"t":"[Monday] Add a monday task","ic":"listD","col":"#6161FF"},"13192776747":{"t":"Send doc via email","ic":"mail","col":"#0891B2"},"13192776008":{"t":"Create a letter","ic":"file","col":"#0F766E"},"13192799845":{"t":"Create a vibe View [AI]","ic":"layout","col":"#8466FF"},"13192849513":{"t":"[Teams] Add to Teams","ic":"teams","col":"#5B5FC7"},"13192797701":{"t":"[Teams] Add to Teams channels","ic":"teams","col":"#5B5FC7"},"13192812825":{"t":"[Teams] Send a message via Teams","ic":"teams","col":"#5B5FC7"},"13123269558":{"t":"Send email","ic":"mail","col":"#0891B2"},"13123285312":{"t":"Book a meeting","ic":"calPlus","col":"#2563EB"},"13123315045":{"t":"Assign time away policy","ic":"beach","col":"#0D9488","live":true}},"paths":{"rocket":"<path d=\"M4 13a8 8 0 0 1 7 7 6 6 0 0 0 3-5 9 9 0 0 0 6-8 3 3 0 0 0-3-3 9 9 0 0 0-8 6 6 6 0 0 0-5 3M7 14a6 6 0 0 0-3 6 6 6 0 0 0 6-3M14 9a1 1 0 1 0 2 0 1 1 0 1 0-2 0\"/>","users":"<path d=\"M5 7a4 4 0 1 0 8 0 4 4 0 1 0-8 0M3 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2M16 3.13a4 4 0 0 1 0 7.75M21 21v-2a4 4 0 0 0-3-3.85\"/>","hand":"<path d=\"M8 13V5.5a1.5 1.5 0 0 1 3 0V12M11 5.5v-2a1.5 1.5 0 0 1 3 0V12M14 5.5a1.5 1.5 0 0 1 3 0V12M17 7.5a1.5 1.5 0 0 1 3 0V16a6 6 0 0 1-6 6h-2 .2a6 6 0 0 1-5-2.7L7 19c-.3-.5-1.4-2.4-3.2-5.6a1.5 1.5 0 0 1 .5-2 1.9 1.9 0 0 1 2.3.3L8 13\"/>","expand":"<path d=\"M4 9V5a1 1 0 0 1 1-1h4M20 9V5a1 1 0 0 0-1-1h-4M4 15v4a1 1 0 0 0 1 1h4M20 15v4a1 1 0 0 1-1 1h-4\"/>","details":"<path d=\"M13 5h8M13 9h5M13 15h8M13 19h5\"/><rect x=\"3\" y=\"4\" width=\"6\" height=\"6\" rx=\"1\"/><rect x=\"3\" y=\"14\" width=\"6\" height=\"6\" rx=\"1\"/>","calPlus":"<path d=\"M12.5 21H6a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v5M16 3v4M8 3v4M4 11h16M16 19h6M19 16v6\"/>","slack":"<path d=\"M12 12v-6a2 2 0 0 1 4 0v6m0-2a2 2 0 1 1 2 2h-6M12 12h6a2 2 0 0 1 0 4h-6m2 0a2 2 0 1 1-2 2v-6M12 12v6a2 2 0 0 1-4 0v-6m0 2a2 2 0 1 1-2-2h6M12 12H6a2 2 0 0 1 0-4h6m-2 0a2 2 0 1 1 2-2v6\"/>","mail":"<rect x=\"3\" y=\"5\" width=\"18\" height=\"14\" rx=\"2\"/><path d=\"m3 7 9 6 9-6\"/>","cursorText":"<path d=\"M10 12h4M9 4a3 3 0 0 1 3 3v10a3 3 0 0 1-3 3M15 4a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3\"/>","lock":"<rect x=\"5\" y=\"11\" width=\"14\" height=\"10\" rx=\"2\"/><path d=\"M8 11V7a4 4 0 0 1 8 0v4\"/>","mailHeart":"<path d=\"M10 19H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v4.5M3 7l9 6 9-6M18 22l3.35-3.284a2.143 2.143 0 0 0 .005-3.071 2.242 2.242 0 0 0-3.129-.006l-.224.22-.223-.22a2.242 2.242 0 0 0-3.128-.006 2.143 2.143 0 0 0-.006 3.071L18 22z\"/>","beach":"<path d=\"M17.553 16.75a7.5 7.5 0 0 0-10.606 0M18 3.804a6 6 0 0 0-8.196 2.196l10.392 6a6 6 0 0 0-2.196-8.196zM16.732 10c1.658-2.87 2.225-5.644 1.268-6.196-.957-.552-3.075 1.326-4.732 4.196M15 9l-3 5.196M3 19.25a2.4 2.4 0 0 1 1-.25 2.4 2.4 0 0 1 2 1 2.4 2.4 0 0 0 2 1 2.4 2.4 0 0 0 2-1 2.4 2.4 0 0 1 2-1 2.4 2.4 0 0 1 2 1 2.4 2.4 0 0 0 2 1 2.4 2.4 0 0 0 2-1 2.4 2.4 0 0 1 2-1 2.4 2.4 0 0 1 1 .25\"/>","at":"<circle cx=\"12\" cy=\"12\" r=\"4\"/><path d=\"M16 12v1.5a2.5 2.5 0 0 0 5 0V12a9 9 0 1 0-5.5 8.28\"/>","presentation":"<path d=\"M3 4h18M4 4v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V4M12 16v4M9 20h6M8 12l3-3 2 2 3-3\"/>","survey":"<path d=\"M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2M9 5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-2a2 2 0 0 1-2-2zM9 14l2 2 4-4\"/>","review":"<path d=\"M12 3v18M5 7h14M7 7l-3 6a3 3 0 0 0 6 0l-3-6M17 7l-3 6a3 3 0 0 0 6 0l-3-6M8 21h8\"/>","form":"<path d=\"M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2M9 5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-2a2 2 0 0 1-2-2zM9 12h.01M13 12h2M9 16h.01M13 16h2\"/>","trash":"<path d=\"M4 7h16M10 11v6M14 11v6M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2l1-12M9 7V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v3\"/>","signature":"<path d=\"M3 17c3.333-3.333 5-6 5-8 0-3-1-3-2-3S3.968 7.085 4 9c.034 2.048 1.658 4.877 2.5 6C8 17 9 17.5 10 16l2-3c.333 2.667 1.333 4 3 4 .53 0 2.639-2 3-2 .517 0 1.517.667 3 2\"/>","task":"<path d=\"M10 20.777a8.942 8.942 0 0 1-2.48-.969M14 3.223a9.003 9.003 0 0 1 0 17.554M4.579 17.093a8.961 8.961 0 0 1-1.227-2.592M3.124 10.5c.16-.95.468-1.85.9-2.675l.169-.305M6.907 4.579a8.954 8.954 0 0 1 3.093-1.356M9 12l2 2 4-4\"/>","listD":"<path d=\"M13 5h8M13 9h5M13 15h8M13 19h5M3 4h6v6H3zM3 14h6v6H3z\"/>","file":"<path d=\"M14 3v4a1 1 0 0 0 1 1h4M17 21H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7l5 5v11a2 2 0 0 1-2 2z\"/>","layout":"<path d=\"M4 5a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1zM4 10h16M10 10v10\"/>","teams":"<path d=\"M3 7h10v10H3zM6 10h4M8 10v5M15 9h4a2 2 0 0 1 2 2v3a3 3 0 0 1-3 3h-1a3 3 0 0 1-2-1M17 4.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3\"/>","eye":"<path d=\"M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12zM9 12a3 3 0 1 0 6 0 3 3 0 1 0-6 0\"/>"},"ai":"<svg class=\"svg\" viewBox=\"0 0 24 24\" aria-hidden=\"true\" style=\"stroke:none\"><defs><linearGradient id=\"aig\" x1=\"0\" y1=\"0\" x2=\"1\" y2=\"1\"><stop offset=\"0\" stop-color=\"#8466FF\"/><stop offset=\"1\" stop-color=\"#FF9179\"/></linearGradient></defs><circle cx=\"12\" cy=\"12\" r=\"11\" fill=\"none\" stroke=\"url(#aig)\" stroke-width=\"1\"/><path fill=\"url(#aig)\" d=\"M11.5 9.7a3.2 3.2 0 0 1 1.8-1.8l.4-.2-.3-.7c-.5-1.4-2.4-1.4-3 0l-.7 1.9a1.6 1.6 0 0 1-.9.9l-1.9.7c-1.4.5-1.4 2.4 0 3l.7.3.1-.4a3.2 3.2 0 0 1 1.8-1.8l.8-.3c.3-.1.6-.4.7-.7zM14.3 11a1 1 0 0 1 1.8 0l.5 1.2c.2.5.6.9 1.1 1.1l1.2.5a1 1 0 0 1 0 1.8l-1.2.5c-.5.2-.9.6-1.1 1.1l-.5 1.2a1 1 0 0 1-1.8 0l-.5-1.2a2 2 0 0 0-1.1-1.1l-1.2-.5a1 1 0 0 1 0-1.8l1.2-.5c.5-.2.9-.6 1.1-1.1z\"/></svg>"};
 const MC_PHOTOS = {};
 /* ===================== Team photos for Mission Control (11 Oct) =====================
    claude.ai pages can't load images from files.monday.com, so the monday profile photos of the R&D team, Noam, Shani, and everyone who commits to shapes-platform
@@ -131,8 +138,10 @@ Object.assign(MC_PHOTOS, MC_TEAM_PHOTOS);
    Mission Control's TV mode in the Hackathon Reference page. */
 const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;' }[c]));
 const I = n => `<svg class="svg" viewBox="0 0 24 24" aria-hidden="true">${KIT.paths[n] || KIT.paths.details}</svg>`;
-const MC_STATUS = { done:['Shipped'], progress:['In progress'], todo:['Up for grabs'] };
-const MC_DARK = { done:'#4ADE80', progress:'#A5B4FC', todo:'#FDBA74' };
+const MC_STATUS = { done:['Shipped'], review:['Waiting for review'], progress:['In progress'], todo:['Up for grabs'] };
+const MC_DARK = { done:'#4ADE80', review:'#FCD34D', progress:'#A5B4FC', todo:'#FDBA74' };
+const MC_ORDER = ['done', 'review', 'progress', 'todo'];
+const mcInReview = label => /review/i.test(label || '');
 const MC_PRI_RANK = { High:0, Medium:1, Low:2, 'On hold':3, 'Not set':4 };
 const MC_HUES = ['#4F46E5', '#0D9488', '#DB2777', '#EA580C', '#0891B2', '#7C3AED', '#277C43', '#2563EB'];
 const mcHue = name => MC_HUES[[...name].reduce((a, c) => a + c.charCodeAt(0), 0) % MC_HUES.length];
@@ -158,7 +167,7 @@ function mcModel() {
     const subs = it.subs.map(s => ({ ...s, sp:mcSP(s.name), done:(s.status || '').toLowerCase() === 'done' }));
     const sp = subs.reduce((a, s) => a + s.sp, 0) || +it.sp || 0;
     const people = [...new Set([...it.owners, ...subs.flatMap(s => s.owners)])];
-    const st = mcShipped(it.status, subs) ? 'done' : people.length ? 'progress' : 'todo';
+    const st = mcShipped(it.status, subs) ? 'done' : mcInReview(it.status) ? 'review' : people.length ? 'progress' : 'todo';
     const doneSP = st === 'done' ? sp : subs.filter(s => s.done).reduce((a, s) => a + s.sp, 0);
     return { ...it, subs, sp, doneSP, st, people, pri: MC_PRI_RANK[it.pri] != null ? it.pri : 'Not set' };
   });
@@ -166,18 +175,19 @@ function mcModel() {
   const count = k => items.filter(x => x.st === k).length;
   const lanes = {};
   for (const it of items) for (const p of it.people) (lanes[p] ||= []).push(it);
-  return { items, total, done, pct: total ? Math.round(done / total * 100) : 0, counts:{ done:count('done'), progress:count('progress'), todo:count('todo') }, grabs: items.filter(x => !x.people.length && x.st !== 'done'), lanes };
+  return { items, total, done, pct: total ? Math.round(done / total * 100) : 0, counts:{ done:count('done'), review:count('review'), progress:count('progress'), todo:count('todo') }, grabs: items.filter(x => !x.people.length && x.st === 'todo'), lanes };
 }
 
 const TV = { idle:null, w:{}, data:null };
-const TV_W = { shipped:{ per:6, dwell:10000, lag:0 }, people:{ per:3, dwell:12000, lag:3500 }, grabs:{ per:7, dwell:10000, lag:7000 } };
+const TV_W = { shipped:{ per:6, dwell:10000, lag:0 }, people:{ per:2, dwell:12000, lag:3500 }, review:{ per:4, dwell:10000, lag:5000 }, grabs:{ per:7, dwell:10000, lag:7000 } };
 const tvChunk = (list, n) => { const out = []; for (let i = 0; i < list.length; i += n) out.push(list.slice(i, i + n)); return out.length ? out : [[]]; };
 function tvData() {
   const M = mcModel();
   const shipped = M.items.filter(x => x.st === 'done').sort((a, b) => new Date(b.updated || 0) - new Date(a.updated || 0));
   const people = Object.entries(M.lanes).map(([p, l]) => [p, l.filter(x => x.st === 'progress')]).filter(([, l]) => l.length).sort((a, b) => b[1].length - a[1].length || a[0].localeCompare(b[0]));
   const grabs = [...M.grabs].sort((a, b) => MC_PRI_RANK[a.pri] - MC_PRI_RANK[b.pri] || b.sp - a.sp);
-  return { M, shipped, people, grabs };
+  const review = M.items.filter(x => x.st === 'review').sort((a, b) => new Date(b.updated || 0) - new Date(a.updated || 0));
+  return { M, shipped, people, review, grabs };
 }
 const tvIcon = it => { const k = KIT.kit[it.id]; const ic = k?.ic || 'details', col = k?.col || '#A19E99';
   return `<span class="tv-ic" style="--c:${col}">${ic === 'ai' ? KIT.ai : I(ic)}</span>`; };
@@ -196,26 +206,28 @@ function tvBody(k, items) {
   if (k === 'people') return items.length ? `<div class="tv-ppl">${items.map(([p, list], j) => `<div class="tv-person" style="--j:${j}">
       <div class="tv-person-h">${mcAvatar(p, 34)}<b>${esc(p)}</b><em>${list.length}</em></div>
       ${list.slice(0, 4).map(it => { const n = it.subs.length, d = it.subs.filter(x => x.done).length;
-        return `<div class="tv-row"><span class="tv-row-t">${esc(tvName(it))}</span>${n ? `<span class="tv-prog"><i style="--w:${d / n * 100}%"></i></span>` : '<span></span>'}</div>`; }).join('')}
+        return `<div class="tv-row"><span class="tv-row-t">${esc(tvName(it))}</span></div>`; }).join('')}
       ${list.length > 4 ? `<div class="tv-more">+${list.length - 4} more</div>` : ''}</div>`).join('')}</div>`
     : `<div class="tv-empty">Nobody has an action in progress yet.</div>`;
+  if (k === 'review') return items.length ? `<div class="tv-rev">${items.map((it, j) => `<div class="tv-rv" style="--j:${j}">${tvIcon(it)}<div class="tv-rv-x"><b>${esc(tvName(it))}</b><em>${esc(it.people.join(', ') || 'No owner')}${it.updated ? ` · ${mcAgo(it.updated)}` : ''}</em></div><span class="tv-rv-av">${it.people.slice(0, 2).map(p => mcAvatar(p, 28)).join('')}</span></div>`).join('')}</div>`
+    : `<div class="tv-empty">Nothing waiting for review.</div>`;
   return items.length ? `<div class="tv-grabs">${items.map((it, j) => `<div class="tv-grab" style="--j:${j}"><i class="tv-pri p-${(it.pri || '').replace(/\s/g, '')}" title="${esc(it.pri)}"></i><span class="tv-grab-t">${esc(it.name)}</span><em>${it.sp ? `${mcFmt(it.sp)} SP` : ''}</em></div>`).join('')}</div>`
     : `<div class="tv-empty">Every action has an owner.</div>`;
 }
 function tvWidget(k) {
   const all = TV.data[k], pages = tvChunk(all, TV_W[k].per), w = TV.w[k];
   w.n = pages.length; if (w.page >= w.n) w.page = 0;
-  const title = { shipped:'Shipped', people:'Who\'s on what', grabs:'Up for grabs' }[k], ic = { shipped:'rocket', people:'users', grabs:'hand' }[k];
+  const title = { shipped:'Shipped', people:'Who\'s on what', review:'Waiting for review', grabs:'Up for grabs' }[k], ic = { shipped:'rocket', people:'users', review:'eye', grabs:'hand' }[k];
   return `<section class="tv-w tv-w-${k}" data-w="${k}"><header class="tv-wh">${I(ic)}<h3>${title}</h3><span class="tv-n">${all.length}</span><span class="tv-sp"></span>${tvDots(k, w.n)}</header>
     <div class="tv-wb">${tvBody(k, pages[w.page])}</div></section>`;
 }
 function tvSummary() {
   const M = TV.data.M;
-  const bar = ['done', 'progress', 'todo'].map(k => `<i style="--w:${M.items.length ? M.counts[k] / M.items.length * 100 : 0}%;--c:${MC_DARK[k]}"></i>`).join('');
+  const bar = MC_ORDER.map(k => `<i style="--w:${M.items.length ? M.counts[k] / M.items.length * 100 : 0}%;--c:${MC_DARK[k]}"></i>`).join('');
   const kpi = (k, n) => `<div class="tv-kpi"><span><i style="background:${MC_DARK[k]}"></i>${MC_STATUS[k][0]}</span><b>${n}</b></div>`;
   return `<section class="tv-w tv-sum">
     <div class="tv-kpi tv-prog-k"><span>Progress</span><div class="tv-pk"><b>${M.pct}<small>%</small></b><em>${mcFmt(M.done)} of ${mcFmt(M.total)} SP</em></div><div class="tv-bar">${bar}</div></div>
-    ${kpi('done', M.counts.done)}${kpi('progress', M.counts.progress)}${kpi('todo', M.counts.todo)}
+    ${kpi('done', M.counts.done)}${kpi('review', M.counts.review)}${kpi('progress', M.counts.progress)}${kpi('todo', M.counts.todo)}
     <div class="tv-kpi"><span>People on it</span><b>${Object.keys(M.lanes).length}<small> / ${M.items.length} actions</small></b></div>
   </section>`;
 }
@@ -226,7 +238,7 @@ function tvRender() {
   const hm = new Date().toLocaleTimeString([], { hour:'2-digit', minute:'2-digit' });
   st.innerHTML = `<header class="tv-top"><div class="tv-title"><h1>Workflows actions hackathon</h1></div>
       <div class="tv-top-r"><span class="tv-live ${stale ? 'stale' : 'on'}"><i></i>${at ? `Updated ${mcAgo(at)}` : 'Waiting for data'}</span><span class="tv-clock">${hm}</span></div></header>
-    <div class="tv-grid">${tvSummary()}${tvWidget('shipped')}${tvWidget('people')}${tvWidget('grabs')}</div>`;
+    <div class="tv-grid">${tvSummary()}${tvWidget('shipped')}${tvWidget('people')}${tvWidget('review')}${tvWidget('grabs')}</div>`;
 }
 function tvTurn(k) {
   const w = TV.w[k];
